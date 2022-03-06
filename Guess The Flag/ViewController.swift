@@ -24,8 +24,9 @@ class ViewController: UIViewController {
 
  countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
-
-   
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showScore))
+        
+        navigationItem.rightBarButtonItem?.tintColor = .white
 
         askQuestion(action: nil)
     }
@@ -67,7 +68,17 @@ class ViewController: UIViewController {
         
     }
     
- 
+    
+    @objc func showScore() {
+        
+      
+        let vc = UIAlertController(title: nil, message: "Your score is \(score).", preferredStyle: .actionSheet)
+        vc.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+        
+    }
     
     
     
